@@ -1,29 +1,30 @@
-##QuickSort
-
+from StringToList import strtolist
 dt = open('data.txt', 'r').read()
-
-
-##Function for string to integer list
-def strtolist(x):
-    counter = 0
-    counter2 = 0
-    temp_number = ''
-    new_data = []
-    
-    for i in x:
-        if i is not ' ':
-            temp_number = temp_number + i
-
-    
-        elif i == ' ':
-            new_data.append(int(temp_number))
-            temp_number = ''
-            continue
-
-    return new_data
-
 integer_list = strtolist(dt)
 
-print('sometihng')
-##QuickSorter 
+from Partitioning import partition
+print(integer_list)
+
+
+#QuickSorter 
+
+def quicksort(list):
+
+    pivot = list[0]
+    partition(list, pivot)
+    
+    defined_small = partition(list, pivot)[0]
+    defined_big = partition(list, pivot)[1]
+    
+    quicksort(defined_big)
+    quicksort(defined_small)
+
+    sorted_list.append(defined_small)
+    sorted_list.append(pivot)
+    sorted_list.append(defined_big)
+
+    return sorted_list
+
+
+quicksort(integer_list)
 
